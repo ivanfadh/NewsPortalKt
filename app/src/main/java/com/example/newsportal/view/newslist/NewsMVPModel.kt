@@ -11,7 +11,6 @@ import io.reactivex.schedulers.Schedulers
 
 class NewsMVPModel : NewsMVPContract.Model {
     lateinit var apiInterface: ApiInterface
-    lateinit var apiInterface2: ApiInterface
 
     //can call and dispose all at once
     private val disposable = CompositeDisposable()
@@ -38,12 +37,12 @@ class NewsMVPModel : NewsMVPContract.Model {
     override fun getNewsList(onFinishedListener: NewsMVPContract.Model.OnFinishedListener, pageNo: Int) {
         apiInterface = ApiClient.client?.create(ApiInterface::class.java)!!
 
-        disposable.add(apiInterface.news
+       apiInterface.news()
                 //tell observable to run taks on the background thread
                 .subscribeOn(Schedulers.io())
                 //tells Observer to receive the data on android UI thread so that you can take any UI related actions
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<ArticlesResponse>() {
+                .subscribe(object : DisposableSingleObserver<ArticlesResponse>() {
                     override fun onSuccess(articles: ArticlesResponse) {
                         val articlesItems = articles.articles
                         articlesItems?.let { onFinishedListener.onFinished(it) }
@@ -53,7 +52,7 @@ class NewsMVPModel : NewsMVPContract.Model {
                         e.message?.let { onFinishedListener.onFailure(it) }
 
                     }
-                }))
+                })
 
     }
 
