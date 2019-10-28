@@ -11,11 +11,8 @@ import retrofit2.http.GET
 interface ApiInterface {
     @GET("v2/top-headlines/?country=id&apiKey=f702444a43234cdd90a4521f712aec88")
 //    val news: Call<ArticlesResponse>
-    fun news(): Single<ArticlesResponse>
+    fun news(): Observable<ArticlesResponse>
 
-//    val news: Observable<List<ArticlesResponse>>
-/*
-    @get:GET("v2/top-headlines?country=id&apiKey=f702444a43234cdd90a4521f712aec88")
-    val newsSource: Single<Source>*/
-
+    @GET("v2/top-headlines?country=gb&apiKey=f702444a43234cdd90a4521f712aec88")
+    fun newsUK(): Observable<ArticlesResponse>
 }
