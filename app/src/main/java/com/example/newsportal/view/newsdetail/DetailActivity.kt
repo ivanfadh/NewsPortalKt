@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 
 import com.example.newsportal.R
-import com.squareup.picasso.Picasso
 
 import java.net.URL
 import java.util.Scanner
@@ -43,9 +43,9 @@ class DetailActivity : AppCompatActivity() {
         val news = intent.getStringExtra("NEWS")
 
         // Set ke view
-        Picasso.get()
+        Glide
+                .with(this)
                 .load(image)
-                .resize(400, 170)
                 .centerCrop()
                 .into(ivNews)
 

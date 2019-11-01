@@ -58,20 +58,7 @@ class MainActivity : AppCompatActivity(), NewsMVPContract.View {
         tvResponse = findViewById(R.id.tvError)
         buttonReload = findViewById(R.id.buttonReload)
         presenter.requestDataFromServer()
-        buttomHtml = findViewById(R.id.buttonHtml)
-        buttonHtmlFail = findViewById(R.id.buttonHtmlFail)
 
-
-
-        buttomHtml.setOnClickListener {
-            intent = Intent(this, fromHtmlActivity::class.java)
-            startActivity(intent)
-        }
-
-        buttonHtmlFail.setOnClickListener {
-            intent = Intent(this, fromHtmlActivityFail::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun showLoading(loading: Boolean) {

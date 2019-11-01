@@ -31,7 +31,7 @@ class NewsMVPModel : NewsMVPContract.Model {
 
         val articleResponseUK = apiInterface.newsUK()
 
- /*       Observable.zip(
+        Observable.zip(
                 articleResponseUK, articlesResponseSingle,
                 //High order function
                 BiFunction <ArticlesResponse, ArticlesResponse, ArticlesResponse>  { articlesResponse, articlesResponse2 ->
@@ -47,7 +47,7 @@ class NewsMVPModel : NewsMVPContract.Model {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<ArticlesResponse> {
-                    override fun onSubscribe(d: Disposable) {
+                    override fun onSubscribe(d: Disposable){
 
                     }
 
@@ -67,9 +67,7 @@ class NewsMVPModel : NewsMVPContract.Model {
 
                     }
                 })
-
-*/
-        Observable.concat(articlesResponseSingle, articleResponseUK)
+/*        Observable.concat(articlesResponseSingle, articleResponseUK)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<ArticlesResponse> {
@@ -93,7 +91,7 @@ class NewsMVPModel : NewsMVPContract.Model {
                     override fun onComplete() {
 
                     }
-                })
+                })*/
 
 /*        Observable.merge(articlesResponseSingle, articleResponseUK)
                 .subscribeOn(Schedulers.io())
@@ -116,11 +114,11 @@ class NewsMVPModel : NewsMVPContract.Model {
 
                     }
 
-
                     override fun onComplete() {
 
                     }
                 })*/
+
 
     }
 }

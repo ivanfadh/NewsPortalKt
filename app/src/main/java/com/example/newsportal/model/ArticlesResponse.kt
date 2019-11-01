@@ -20,5 +20,5 @@ class ArticlesResponse {
                 ",status = '" + status + '\''.toString() +
                 "}"
     }
-
 }
+

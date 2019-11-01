@@ -12,13 +12,11 @@ interface NewsMVPContract {
             fun onFailure(t: String)
         }
 
-
         interface onFinishedNews {
             fun onFinishedSource(newsSource: String)
 
             fun onFailureSource(t: String)
         }
-
         fun getNewsList(onFinishedListener: OnFinishedListener, pageNo: Int)
 
 //        fun getNewsSource(onFinishedNews: onFinishedNews)

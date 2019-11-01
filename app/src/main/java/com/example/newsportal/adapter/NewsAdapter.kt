@@ -2,9 +2,6 @@ package com.example.newsportal.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.text.Html
-import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,18 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 import com.example.newsportal.R
 import com.example.newsportal.model.ArticlesItem
 import com.example.newsportal.view.newsdetail.DetailActivity
-import com.squareup.picasso.Picasso
 
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
-import org.joda.time.format.DateTimeFormatter
-import org.w3c.dom.Text
 
-class NewsAdapter(internal var context: Context, internal var mNewsList: List<ArticlesItem>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
+class NewsAdapter(private var context: Context, private var mNewsList: List<ArticlesItem>) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsHolder {
         val mView = LayoutInflater.from(context).inflate(R.layout.news_list, parent, false)
@@ -38,7 +33,7 @@ class NewsAdapter(internal var context: Context, internal var mNewsList: List<Ar
         holder.tvTitle.text = mNewsList[position].title
 
 
-        val string = "2019-04-22T04:00:00.000Z"
+        val string = "2019-11-01T04:00:00.000Z"
         val formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val date = LocalDate.parse(string, formatter)
 
@@ -46,9 +41,9 @@ class NewsAdapter(internal var context: Context, internal var mNewsList: List<Ar
 
         holder.tvPublisher.text = mNewsList[position].source!!.name
 
-        Picasso.get()
+        Glide
+                .with(context)
                 .load(mNewsList[position].urlToImage)
-                .resize(400, 170)
                 .centerCrop()
                 .into(holder.ivNews)
 
@@ -67,18 +62,10 @@ class NewsAdapter(internal var context: Context, internal var mNewsList: List<Ar
     }
 
     inner class NewsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvTitle: TextView
-        var tvDate: TextView
-        var tvPublisher: TextView
-        var ivNews: ImageView
-
-        init {
-            tvTitle = itemView.findViewById(R.id.tvTitle)
-            tvDate = itemView.findViewById(R.id.tvDate)
-            tvPublisher = itemView.findViewById(R.id.tvPublisher)
-            ivNews = itemView.findViewById(R.id.ivNews)
-
-        }
+        var tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
+        var tvDate: TextView = itemView.findViewById(R.id.tvDate)
+        var tvPublisher: TextView = itemView.findViewById(R.id.tvPublisher)
+        var ivNews: ImageView = itemView.findViewById(R.id.ivNews)
 
     }
 
