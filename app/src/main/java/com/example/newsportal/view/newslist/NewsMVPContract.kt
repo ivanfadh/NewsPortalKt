@@ -12,21 +12,15 @@ interface NewsMVPContract {
             fun onFailure(t: String)
         }
 
-        interface onFinishedNews {
-            fun onFinishedSource(newsSource: String)
-
-            fun onFailureSource(t: String)
-        }
         fun getNewsList(onFinishedListener: OnFinishedListener, pageNo: Int)
 
-//        fun getNewsSource(onFinishedNews: onFinishedNews)
     }
 
     interface View {
-        fun showLoading(loading: Boolean)
+        fun showLoading(loading: Boolean): Any
         fun setNews(articlesItems: List<ArticlesItem>)
         fun onResponseFailure(reason: String)
-
+//        fun setupRecyclerView()
     }
 
     interface Presenter {

@@ -1,10 +1,10 @@
 package com.example.newsportal.view.newslist
 
 import com.example.newsportal.model.ArticlesItem
-import com.example.newsportal.model.Source
 
 
 class NewsMVPPresenter(private val newsMVPView: NewsMVPContract.View?) : NewsMVPContract.Presenter, NewsMVPContract.Model.OnFinishedListener {
+
     private val newsMVPModel: NewsMVPContract.Model
 
     init {
