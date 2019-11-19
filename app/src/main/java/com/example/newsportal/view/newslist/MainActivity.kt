@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsportal.R
 import com.example.newsportal.model.ArticlesItem
 import com.example.newsportal.adapter.NewsAdapter
-import com.example.newsportal.application.NewsApplication
 import com.example.newsportal.di.DaggerAppComponent
-import com.example.newsportal.di.DaggerMainComponent
 import com.example.newsportal.di.PresenterModule
 import javax.inject.Inject
 
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity(), NewsMVPContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val component = DaggerMainComponent.builder()
+        val component = DaggerAppComponent.builder()
                 .presenterModule(PresenterModule(this as NewsMVPContract.View)).build()
 
         component.inject(this)
