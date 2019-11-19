@@ -12,6 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsportal.R
 import com.example.newsportal.model.ArticlesItem
 import com.example.newsportal.adapter.NewsAdapter
+import com.example.newsportal.application.NewsApplication
+import com.example.newsportal.di.DaggerAppComponent
+import com.example.newsportal.di.DaggerMainComponent
+import com.example.newsportal.di.PresenterModule
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), NewsMVPContract.View {
     override fun setNews(articlesItems: List<ArticlesItem>) {
@@ -23,7 +28,8 @@ class MainActivity : AppCompatActivity(), NewsMVPContract.View {
     private var adapter: RecyclerView.Adapter<*>? = null
 
     private var layoutManager: RecyclerView.LayoutManager? = null
-    lateinit var presenter: NewsMVPContract.Presenter
+     @Inject lateinit var presenter: NewsMVPContract.Presenter
+
     lateinit var loadingLayout: LinearLayout
     lateinit var responseLayout: LinearLayout
     lateinit var tvResponse: TextView
@@ -31,13 +37,19 @@ class MainActivity : AppCompatActivity(), NewsMVPContract.View {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val component = DaggerMainComponent.builder()
+                .presenterModule(PresenterModule(this as NewsMVPContract.View)).build()
+
+        component.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
         layoutManager = LinearLayoutManager(this)
         recyclerView?.layoutManager = layoutManager
-        presenter = NewsMVPPresenter(this)
+//        presenter = NewsMVPPresenter(this)
         loadingLayout = findViewById(R.id.layout_loading)
         responseLayout = findViewById(R.id.layout_error)
         tvResponse = findViewById(R.id.tvError)

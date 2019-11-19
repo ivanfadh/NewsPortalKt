@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -50,6 +51,11 @@ dependencies {
     
     //SwipeLayout
     implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    //dagger
+    implementation 'com.google.dagger:dagger:2.11'
+    kapt 'com.google.dagger:dagger-compiler:2.11'
+    compileOnly 'javax.annotation:jsr250-api:1.0'
 
 
     testImplementation 'junit:junit:4.12'
