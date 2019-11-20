@@ -7,12 +7,6 @@ import javax.inject.Inject
 class NewsMVPPresenter @Inject constructor(private val newsMVPView: NewsMVPContract.View?,
                                            private val newsMVPModel: NewsMVPModel) : NewsMVPContract.Presenter, NewsMVPContract.Model.OnFinishedListener {
 
-  /*  private val newsMVPModel: NewsMVPContract.Model
-
-    init {
-        newsMVPModel = NewsMVPModel()
-    }*/
-
     override fun requestDataFromServer() {
 
         newsMVPView?.showLoading(true)

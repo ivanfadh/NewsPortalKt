@@ -5,8 +5,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-//    val BASE_URL = "https://newsapi.org/"
-    val BASE_URL = "https://gql.tokopedia.com/ui"
+    val BASE_URL = "https://newsapi.org/"
 
     private var retrofit: Retrofit? = null
     val client: Retrofit?

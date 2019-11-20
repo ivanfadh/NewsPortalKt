@@ -14,18 +14,7 @@ import javax.inject.Inject
 
 class NewsMVPModel @Inject constructor(var apiInterface: ApiInterface?): NewsMVPContract.Model{
 
-/*    @Inject
-    lateinit var apiInterface: ApiInterface*/
-
     override fun getNewsList(onFinishedListener: NewsMVPContract.Model.OnFinishedListener, pageNo: Int) {
-
- /*       val api = DaggerAppComponent.builder()
-                .networkModule(NetworkModule()).build()
-
-        api.inject(MainActivity())*/
-
-
-//        apiInterface = ApiClient.client?.create(ApiInterface::class.java)!!
 
         val articlesResponseSingle = apiInterface!!.news()
 
