@@ -1,15 +1,17 @@
 package com.example.newsportal.view.newslist
 
 import com.example.newsportal.model.ArticlesItem
+import javax.inject.Inject
 
 
-class NewsMVPPresenter(private val newsMVPView: NewsMVPContract.View?) : NewsMVPContract.Presenter, NewsMVPContract.Model.OnFinishedListener {
+class NewsMVPPresenter @Inject constructor(private val newsMVPView: NewsMVPContract.View?,
+                                           private val newsMVPModel: NewsMVPModel) : NewsMVPContract.Presenter, NewsMVPContract.Model.OnFinishedListener {
 
-    private val newsMVPModel: NewsMVPContract.Model
+  /*  private val newsMVPModel: NewsMVPContract.Model
 
     init {
         newsMVPModel = NewsMVPModel()
-    }
+    }*/
 
     override fun requestDataFromServer() {
 
