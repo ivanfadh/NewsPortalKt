@@ -26,8 +26,7 @@ class MainActivity : AppCompatActivity(), NewsMVPContract.View {
     private var adapter: RecyclerView.Adapter<*>? = null
 
     private var layoutManager: RecyclerView.LayoutManager? = null
-     @Inject lateinit var presenter: NewsMVPContract.Presenter
-
+     @Inject lateinit var presenter: NewsMVPPresenter
     lateinit var loadingLayout: LinearLayout
     lateinit var responseLayout: LinearLayout
     lateinit var tvResponse: TextView
